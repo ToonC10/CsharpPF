@@ -1,8 +1,6 @@
 ﻿//een voorbeeld
-
+/*
 Console.WriteLine("Hallo"); // ik zei hallo
-/*ik heb
-hallo gezegd*/
 
 Console.WriteLine(
  "Hallo");
@@ -18,4 +16,4 @@ void Tekenlijn()
 {
     throw new NotImplementedException();
 }
-
+*/

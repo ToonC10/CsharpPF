@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsharpPFCursus", "CsharpPFCursus\CsharpPFCursus.csproj", "{6AC97E71-EA5F-4FD8-B06E-50E056E13B14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsharpPFCursus", "CsharpPFCursus\CsharpPFCursus.csproj", "{6AC97E71-EA5F-4FD8-B06E-50E056E13B14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpOefeningen", "CSharpOefeningen\CSharpOefeningen.csproj", "{47A35A2D-A373-4F40-9AE1-3847488786D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{6AC97E71-EA5F-4FD8-B06E-50E056E13B14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AC97E71-EA5F-4FD8-B06E-50E056E13B14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AC97E71-EA5F-4FD8-B06E-50E056E13B14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47A35A2D-A373-4F40-9AE1-3847488786D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47A35A2D-A373-4F40-9AE1-3847488786D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47A35A2D-A373-4F40-9AE1-3847488786D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47A35A2D-A373-4F40-9AE1-3847488786D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
