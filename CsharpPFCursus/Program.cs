@@ -438,7 +438,7 @@ Console.WriteLine("Dit zijn de nummers van je rekeningen:");
 foreach (ulong rekeningNr in rekeningNrs)
     Console.WriteLine(rekeningNr);
 
-*/
+
 string[,] hoofdstedenLanden ={{"Cuba","Havana","Spaans"},
  {"Brazilië","Brasilia","Portugees"}};
 
@@ -447,3 +447,183 @@ var hoofdstedenLanden2 = new[,]
     {"Cuba","Havana","Spaans"},
     {"Brazilië","Brasilia","Portugees"}
  };
+
+
+string[] namen = { "Asterix", "Obelix", "Idefix" };
+Console.WriteLine("Beginsituatie:");
+foreach (string naam in namen)
+    Console.WriteLine(naam);
+
+Array.Sort(namen);
+Console.WriteLine("Na Sort:");
+foreach (string naam in namen)
+    Console.WriteLine(naam);
+
+Array.Reverse(namen);
+ Console.WriteLine("Na Reverse:");
+foreach (string naam in namen)
+    Console.WriteLine(naam);
+
+string[] kopie = new string[namen.Length];
+ Array.Copy(namen, kopie, namen.Length);
+Console.WriteLine("Kopie:");
+foreach (string naam in kopie)
+ Console.WriteLine(naam);
+
+Console.WriteLine("Eerste Idefix:" +
+ Array.IndexOf(namen, "Idefix"));
+
+
+Seizoen plukseizoen = Seizoen.Herfst;
+Console.WriteLine(plukseizoen);
+Console.WriteLine((int)plukseizoen);
+
+*/
+
+//Classes and objects
+
+using CsharpPFCursus;
+using CSharpPFCursus;
+/*
+Werknemer ik;
+ik = new Werknemer();
+ik.Naam = "Asterix";
+ik.Geslacht = Geslacht.Man;
+ik.InDienst = new DateTime(2023, 1, 1);
+Console.WriteLine(ik.Naam);
+Console.WriteLine(ik.Geslacht);
+Console.WriteLine(ik.InDienst);
+
+
+Werknemer ik;
+ik = new Werknemer();
+if (ik is null)
+ Console.WriteLine("niet verbonden");
+else
+    Console.WriteLine("verbonden");
+ik = null!;
+if (ik is null)
+ Console.WriteLine("niet verbonden");
+else
+    Console.WriteLine("verbonden");
+
+//korter
+
+Werknemer ik;
+ik = new Werknemer();
+Console.WriteLine(ik is null ? "niet verbonden" : "verbonden");
+ik = null!;
+Console.WriteLine(ik is null ? "niet verbonden" : "verbonden");
+
+
+//Werknemer ik = new Werknemer();
+//of
+Werknemer ik = new();
+ik.Naam = "Asterix";
+ik.Geslacht = Geslacht.Man;
+ik.InDienst = new DateTime(2023, 1, 1);
+Console.WriteLine(ik.Naam);
+
+
+Werknemer ik = new();
+ik.Naam = "Asterix";
+ik.Geslacht = Geslacht.Man;
+ik.InDienst = new DateTime(2024, 4, 29);
+Console.WriteLine(ik.Naam);
+Werknemer mezelf;
+mezelf = ik;
+Console.WriteLine(mezelf.Naam);
+Console.WriteLine(ik == mezelf);
+ik = null!;
+Console.WriteLine(ik == mezelf);
+Console.WriteLine(mezelf.Naam);
+Console.WriteLine(mezelf.VerjaarAncien);
+
+
+//?
+int? aantalKinderen = null;
+int aantalKamers = aantalKinderen.HasValue ? aantalKinderen.Value : 0;
+Console.WriteLine($"Er zijn {aantalKamers} kinderkamers nodig.");
+
+//??
+int? aantalKinderen2 = null;
+int aantalKamers2 = aantalKinderen2 ?? 0;
+Console.WriteLine($"Er zijn {aantalKamers2} kinderkamers nodig.");
+
+
+Werknemer[] onzeWerknemers = new Werknemer[5];
+for (int teller = 0; teller < onzeWerknemers.Length; teller++)
+ onzeWerknemers[teller] = new Werknemer();
+
+
+//Methods
+Werknemer ik = new Werknemer();
+ik.Naam = "Asterix";
+ik.Geslacht = Geslacht.Man;
+ik.InDienst = new DateTime(2023, 1, 1);
+Console.WriteLine(ik.GetInfo());
+
+
+int AantalLijnen = 30;
+char teken = '*';
+Werknemer ik = new Werknemer();
+ik.Naam = "Asterix";
+ik.Geslacht = Geslacht.Man;
+ik.InDienst = new DateTime(2023, 1, 1);
+
+Werknemer jij = new Werknemer();
+jij.Naam = "Obelix";
+jij.Geslacht = Geslacht.Man;
+jij.InDienst = new DateTime(2023, 1, 2);
+
+LijnenTrekker lijnenTrekker = new LijnenTrekker();
+
+Console.WriteLine(ik.GetInfo());
+lijnenTrekker.TekenLijn(AantalLijnen, teken);
+
+Console.WriteLine(jij.GetInfo());
+lijnenTrekker.TekenLijn(79, '=');
+
+lijnenTrekker.TekenLijn();
+lijnenTrekker.TekenLijn(10);
+
+
+LijnenTrekker lijnenTrekker = new LijnenTrekker();
+lijnenTrekker.TekenLijn(teken: '*', lengte: 10);
+
+
+//optionele parameters
+LijnenTrekker lijnenTrekker = new LijnenTrekker();
+lijnenTrekker.TekenLijn(10, '*');
+lijnenTrekker.TekenLijn(10);
+lijnenTrekker.TekenLijn(lengte: 30);
+lijnenTrekker.TekenLijn(lengte: 40, teken: '=');
+
+
+Omzetter omzetter = new Omzetter();
+Console.Write("Afstand in cm: ");
+double cm = double.Parse(Console.ReadLine()!);
+Console.WriteLine($"{omzetter.CmNaarInch(cm)} inches");
+LijnenTrekker lijnenTrekker = new LijnenTrekker();
+lijnenTrekker.TekenLijn();
+Console.Write("Afstand in inches: ");
+double inches = double.Parse(Console.ReadLine()!);
+Console.WriteLine($"{omzetter.InchNaarCm(inches)} cm");
+
+
+int eerste = 10, tweede = 20;
+Verwisselaar verwisselaar = new Verwisselaar();
+verwisselaar.Verwissel(ref eerste, ref tweede);
+Console.WriteLine(eerste);
+Console.WriteLine(tweede);
+
+
+Werknemer ik = new Werknemer();
+Console.WriteLine(ik.GetInfo());
+Console.WriteLine(ik.Naam.ToUpper());
+
+*/
+Werknemer ik = new Werknemer("Asterix", new DateTime(2023, 1, 1), Geslacht.Man);
+Console.WriteLine(ik.GetInfo());
+Werknemer jij = new Werknemer();
+Console.WriteLine(jij.GetInfo());
