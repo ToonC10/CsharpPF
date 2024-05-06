@@ -1,8 +1,20 @@
 ﻿namespace CSharpPFOefeningen;
 public class Voertuig
 {
-    public string Polishouder { get; set; }
+    public string Polishouder { get; init; }
     private decimal kostprijs;
+    public Voertuig() : this("onbepaald", 0m, 0, 0f, "onbepaald")
+    {
+    }
+    public Voertuig(string polishouder, decimal kostprijs,
+    int pk, float gemiddeldVerbruik, string nummerplaat)
+    {
+        Polishouder = polishouder;
+        Kostprijs = kostprijs;
+        Pk = pk;
+        GemiddeldVerbruik = gemiddeldVerbruik;
+        Nummerplaat = nummerplaat;
+    }
     public decimal Kostprijs
     {
         get

@@ -484,6 +484,7 @@ Console.WriteLine((int)plukseizoen);
 
 using CsharpPFCursus;
 using CSharpPFCursus;
+using static CsharpPFCursus.Werknemer;
 /*
 Werknemer ik;
 ik = new Werknemer();
@@ -622,8 +623,84 @@ Werknemer ik = new Werknemer();
 Console.WriteLine(ik.GetInfo());
 Console.WriteLine(ik.Naam.ToUpper());
 
-*/
+
 Werknemer ik = new Werknemer("Asterix", new DateTime(2023, 1, 1), Geslacht.Man);
 Console.WriteLine(ik.GetInfo());
 Werknemer jij = new Werknemer();
 Console.WriteLine(jij.GetInfo());
+
+
+Werknemer ik = new() //ipv Werknemer ik = new Werknemer()
+{
+    Naam = "Asterix",
+    InDienst = new DateTime(2023, 7, 1),
+    Geslacht = Geslacht.Man
+};
+
+
+Werknemer ik = new()
+{
+    Naam = "Asterix" //kan ook nog null zijn
+};
+ik.Geslacht = Geslacht.Man;
+ik.InDienst = new DateTime(2023, 7, 1);
+ik.Naam = "Obelix";
+Console.WriteLine(ik.GetInfo());
+
+Werknemer jij = new Werknemer("Obelix", new DateTime(2023, 7, 1), Geslacht.Man);
+
+
+using CSharpPFCursus;
+Werknemer ik = new()
+{
+ Naam = "Asterix",
+ InDienst = new DateTime(2023, 7, 1),
+ Geslacht = Geslacht.Man
+};
+ik.Naam = "Obelix";
+
+
+Werknemer ik = new Werknemer("Asterix", new DateTime(2023, 1, 1), Geslacht.Man);
+var persoon = new { Nr = 1, Naam = "Adam", AantalKinderen = 2 };
+Console.WriteLine(persoon.GetType().ToString());
+Console.WriteLine(persoon.Naam);
+
+
+Werknemer ik = new Werknemer("Asterix", DateTime.Today, Geslacht.Man);
+Werknemer jij = new Werknemer("Obelix", DateTime.Today, Geslacht.Man);
+Werknemer.Personeelsfeest = new DateOnly(2024, 12, 12);
+Console.WriteLine(Werknemer.Personeelsfeest);
+Console.WriteLine(ik.GetInfo());
+Console.WriteLine(jij.GetInfo());
+
+
+Console.WriteLine(Rekenaar.Kwadraat(3));
+
+
+Arbeider ik = new Arbeider();
+Console.WriteLine(ik.GetInfo());
+
+
+LijnenTrekker lijnenTrekker = new LijnenTrekker();
+
+Arbeider Kevin = new Arbeider("Kevin", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+Console.WriteLine(Kevin.GetInfo());
+lijnenTrekker.TekenLijn();
+
+Bediende Ronny = new Bediende("Ronny", new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m);
+Console.WriteLine(Ronny.GetInfo());
+lijnenTrekker.TekenLijn();
+
+Manager Toon = new Manager("Toon", new DateTime(2024, 1, 26), Geslacht.Man, 19864.89m, 7000m);
+Console.WriteLine(Toon.GetInfo());
+lijnenTrekker.TekenLijn();
+
+*/
+object ik = new Manager("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m, 7000m);
+Console.WriteLine(ik is Manager);
+Console.WriteLine(ik is Bediende);
+Console.WriteLine(ik is Werknemer);
+Console.WriteLine(ik is Arbeider);
+Console.WriteLine(ik is string);
+ik = null!;
+Console.WriteLine(ik is Manager);

@@ -1,23 +1,56 @@
 ﻿using CSharpPFCursus;
+using System.Diagnostics.CodeAnalysis;
 namespace CsharpPFCursus;
 
 public class Werknemer
 {
     // propfull tab tab
     private string naam;
-
+    //public required string Naam voor required ipv
     public string Naam
     {
         get => naam;
-        set
+        //init => naam = !string.IsNullOrWhiteSpace(value) ? value : "onbekende naam";   <-- gaat ook
+        init
         {
             if (value != string.Empty)
             naam = value;
         }
     }
+    
+    private static DateOnly personeelsfeest;
+    public static DateOnly Personeelsfeest
+    {
+        set
+        {
+            personeelsfeest = value;
+        }
+        get
+        {
+            return personeelsfeest;
+        }
+    }
+    
+    //of een auto property
+    //public static DateOnly Personeelsfeest { get; set; }
+    //of een expression-bodied property
+    //private static DateOnly personeelsfeest;
+    //of
+    //public static DateOnly Personeelsfeest
+    //{
+    // set => personeelsfeest = value;
+    // get => personeelsfeest;
+    //}
 
-    //prop tab tab
-    public DateTime InDienst { get; set; }
+    static Werknemer()
+    {
+        Personeelsfeest = new DateOnly(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
+        while (Personeelsfeest.DayOfWeek != DayOfWeek.Friday)
+        Personeelsfeest = Personeelsfeest.AddDays(1);
+    }
+
+//prop tab tab
+public DateTime InDienst { get; set; }
     public Geslacht Geslacht { get; set; }
 
     public bool VerjaarAncien
@@ -27,11 +60,12 @@ public class Werknemer
         }
     }
 
-    public string GetInfo()
+    public virtual string GetInfo()
     {
-        return  $"Naam: {Naam}\n" +
-                $"Geslacht: {Geslacht}\n" + 
-                $"In dienst: {InDienst}";
+        return $"Naam: {Naam}\n" +
+            $"Geslacht: {Geslacht}\n" +
+            $"In dienst: {InDienst}\n" +
+            $"Personeelsfeest: {Personeelsfeest}\n ";
     }
 
     //ctor tab tab
@@ -43,11 +77,9 @@ public class Werknemer
     }
     of
     */
-
     public Werknemer() : this("Onbekend", DateTime.Today, Geslacht.Man)
     {
     }
-
 
     public Werknemer(string naam, DateTime inDienst, Geslacht geslacht)
     {
@@ -55,4 +87,13 @@ public class Werknemer
         this.InDienst = inDienst;
         this.Geslacht = geslacht;
     }
+
+
+
+    /*
+    public static class Rekenaar
+    {
+        public static int Kwadraat(int getal) { return getal * getal; }
+    }
+    */
 }

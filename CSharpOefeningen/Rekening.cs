@@ -1,13 +1,20 @@
-﻿namespace CSharpPFOefeningen;
+﻿
+namespace CSharpPFOefeningen;
 public class Rekening
 {
     private readonly DateOnly EersteCreatie = new DateOnly(1900, 1, 1);
+    public Rekening(string nummer, decimal saldo, DateOnly creatieDatum)
+    {
+        Nummer = nummer;
+        Saldo = saldo;
+        CreatieDatum = creatieDatum;
+    }
 
     private string nummer;
     public string Nummer
     {
         get => nummer;
-        set
+        init
         {
             if (IsGeldigRekeningNummer(value))
             {
