@@ -2,8 +2,10 @@
 using System.Diagnostics.CodeAnalysis;
 namespace CsharpPFCursus;
 
-public class Werknemer
+public abstract class Werknemer
 {
+
+
     // propfull tab tab
     private string naam;
     //public required string Naam voor required ipv
@@ -50,7 +52,7 @@ public class Werknemer
     }
 
 //prop tab tab
-public DateTime InDienst { get; set; }
+    public DateTime InDienst { get; set; }
     public Geslacht Geslacht { get; set; }
 
     public bool VerjaarAncien
@@ -88,7 +90,45 @@ public DateTime InDienst { get; set; }
         this.Geslacht = geslacht;
     }
 
+    public override string ToString()
+    {
+        return $"{Naam} {Geslacht}";
+    }
 
+    //Generated
+    public override bool Equals(object? obj)
+    {
+        return obj is Werknemer werknemer &&
+               Naam == werknemer.Naam;
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Naam);
+    }
+    /*
+    //zelfgeschreven
+    public override bool Equals(object? obj)
+    {
+        if (obj is Werknemer)
+        {
+            Werknemer deAndere = (Werknemer)obj;
+            return this.Naam == deAndere.Naam;
+        }
+        else
+            return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return Naam.GetHashCode();
+    }
+    */
+
+    public abstract decimal Premie
+    {
+        get;
+    }
 
     /*
     public static class Rekenaar

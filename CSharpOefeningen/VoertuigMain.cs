@@ -43,5 +43,13 @@ Voertuig v2 = new Voertuig
 Console.WriteLine(v1.GetVoertuigInfo());
 Console.WriteLine();
 Console.WriteLine(v2.GetVoertuigInfo());
-
 */
+
+using CSharpPFOefeningen;
+Vrachtwagen vw = new Vrachtwagen("Jan", 40000m, 500, 30, "1-ABC-123", 10000);
+Personenwagen pw = new Personenwagen("Piet", 15000m, 8, 6.5f,"1-DEF-4156", 5, 5);
+
+Console.WriteLine(vw.GetVoertuigInfo());
+Console.WriteLine();
+Console.WriteLine(pw.GetVoertuigInfo());
+

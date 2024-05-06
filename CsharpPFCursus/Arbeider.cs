@@ -38,11 +38,25 @@ public class Arbeider : Werknemer
         Ploegenstelsel = ploegenstelsel;
     }
 
+    public override decimal Premie
+    {
+        get
+        {
+            return Uurloon * 150m;
+        }
+    }
+
     public override string GetInfo()
     {
         return $"{base.GetInfo()}\n" +
             $"Uurloon: {Uurloon}\n" +
             $"Ploegenstelsel: {Ploegenstelsel}";
     }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} {Uurloon} euro/uur";
+    }
+
 
 }

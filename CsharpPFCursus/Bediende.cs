@@ -3,9 +3,7 @@
 namespace CSharpPFCursus;
 public class Bediende : Werknemer
 {
-    public Bediende(string naam, DateTime indienst,
-    Geslacht geslacht, decimal wedde)
-    : base(naam, indienst, geslacht)
+    public Bediende(string naam, DateTime indienst, Geslacht geslacht, decimal wedde): base(naam, indienst, geslacht)
     {
         Wedde = wedde;
     }
@@ -22,9 +20,25 @@ public class Bediende : Werknemer
                 wedde = value;
         }
     }
+
+    public override decimal Premie
+    {
+        get
+        {
+            return Wedde* 2m;
+        }
+    }
+
+
     public override string GetInfo()
     {
         return $"{base.GetInfo()}\n" +
         $"Wedde: {Wedde}";
     }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} {Wedde} euro/maand";
+    }
+
 }

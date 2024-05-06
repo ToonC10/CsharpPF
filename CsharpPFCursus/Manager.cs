@@ -1,9 +1,7 @@
 ﻿namespace CSharpPFCursus;
-public class Manager : Bediende
+public sealed class Manager : Bediende
 {
-    public Manager(string naam, DateTime indienst, Geslacht geslacht,
-    decimal wedde, decimal bonus)
-    : base(naam, indienst, geslacht, wedde)
+    public Manager(string naam, DateTime indienst, Geslacht geslacht, decimal wedde, decimal bonus): base(naam, indienst, geslacht, wedde)
     {
         Bonus = bonus;
     }
@@ -20,9 +18,23 @@ public class Manager : Bediende
                 bonus = value;
         }
     }
+
+    public override decimal Premie
+    {
+        get
+        {
+            return Bonus * 3m;
+        }
+    }
+
     public override string GetInfo()
     {
         return $"{base.GetInfo()}\n" +
         $"Bonus: {Bonus}";
+    }
+
+    public override string ToString()
+    {
+        return $"{base.ToString()} - Bonus: {Bonus}";
     }
 }

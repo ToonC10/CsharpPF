@@ -695,7 +695,7 @@ Manager Toon = new Manager("Toon", new DateTime(2024, 1, 26), Geslacht.Man, 1986
 Console.WriteLine(Toon.GetInfo());
 lijnenTrekker.TekenLijn();
 
-*/
+
 object ik = new Manager("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m, 7000m);
 Console.WriteLine(ik is Manager);
 Console.WriteLine(ik is Bediende);
@@ -704,3 +704,52 @@ Console.WriteLine(ik is Arbeider);
 Console.WriteLine(ik is string);
 ik = null!;
 Console.WriteLine(ik is Manager);
+
+
+Manager ik = new Manager("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m, 7000m);
+Console.WriteLine(ik); // ipv ik.ToString()
+
+
+using CSharpPFCursus;
+Manager ik = new Manager("Asterix", new DateTime(2023, 1, 1),
+ Geslacht.Man, 2400.79m, 7000m);
+Manager mezelf = ik;
+Manager dezelfde = new Manager("Asterix", new DateTime(2023, 1, 1),
+ Geslacht.Man, 2400.79m, 7000m);
+Console.WriteLine(ik.Equals(mezelf));
+Console.WriteLine(ik.Equals(dezelfde));
+
+
+Werknemer ik = new Bediende("Asterix", DateTime.Today,
+ Geslacht.Man, 1500m);
+
+Werknemer jij = new Arbeider("Obelix", DateTime.Today,
+ Geslacht.Man, 10m, 1);
+
+Bediende? hij;
+
+hij = (Bediende)ik;
+
+Console.WriteLine(hij.GetInfo());
+
+//hij = (Bediende)jij;
+// Console.WriteLine(hij.GetInfo());
+
+hij = ik as Bediende;
+if (hij != null)
+ Console.WriteLine(hij.GetInfo());
+
+hij = jij as Bediende;
+if (hij != null)
+ Console.WriteLine(hij.GetInfo());
+
+
+Arbeider asterix = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+Bediende obelix = new Bediende("Obelix", new DateTime(1995, 1, 1), Geslacht.Man, 2400.79m);
+Manager idefix = new Manager("Idefix", new DateTime(1996, 1, 1), Geslacht.Man, 2400.79m, 7000m);
+
+Console.WriteLine(asterix.Premie);
+Console.WriteLine(obelix.Premie);
+Console.WriteLine(idefix.Premie);
+
+*/

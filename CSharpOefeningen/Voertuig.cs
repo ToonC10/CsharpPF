@@ -1,5 +1,5 @@
 ﻿namespace CSharpPFOefeningen;
-public class Voertuig
+public abstract class Voertuig
 {
     public string Polishouder { get; init; }
     private decimal kostprijs;
@@ -60,7 +60,7 @@ public class Voertuig
         }
     }
     public string Nummerplaat { get; set; }
-    public string GetVoertuigInfo()
+    public virtual string GetVoertuigInfo()
     {
         return $"Polishouder: {Polishouder}\n" +
         $"Kostprijs: {Kostprijs}\n" +
@@ -68,4 +68,6 @@ public class Voertuig
         $"Gemiddeld verbruik: {GemiddeldVerbruik}\n" +
         $"Nummerplaat: {Nummerplaat}";
     }
+
+    public abstract double GetKyotoScore();
 }
