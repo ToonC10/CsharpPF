@@ -482,9 +482,10 @@ Console.WriteLine((int)plukseizoen);
 
 //Classes and objects
 
-using CsharpPFCursus;
-using CSharpPFCursus;
-using static CsharpPFCursus.Werknemer;
+//using CsharpPFCursus;
+//using CSharpPFCursus;
+//using static CsharpPFCursus.Werknemer;
+
 /*
 Werknemer ik;
 ik = new Werknemer();
@@ -752,4 +753,303 @@ Console.WriteLine(asterix.Premie);
 Console.WriteLine(obelix.Premie);
 Console.WriteLine(idefix.Premie);
 
+
+Werknemer[] wij = new Werknemer[3];
+wij[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+wij[1] = new Bediende("Obelix", new DateTime(1995, 2, 1), Geslacht.Man, 2400.79m);
+wij[2] = new Manager("Idefix", new DateTime(1996, 3, 1), Geslacht.Man, 2400.79m, 7000m);
+foreach (Werknemer eenWerknemer in wij)
+ Console.WriteLine(eenWerknemer.GetInfo());
+
+
+
+var land = "belgië";
+Console.WriteLine(land.ToUpperFirst());
+Console.WriteLine(land.Right(3));
+
+
+//Afdeling objecten via een constructor met parameters:
+Afdeling afdelingStrijd = new Afdeling("Strijd", 0);
+Afdeling afdelingFeest = new Afdeling("Feest", 1);
+
+Werknemer[] wij = new Werknemer[3];
+
+wij[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+wij[0].Afdeling = afdelingStrijd;
+
+wij[1] = new Bediende("Obelix", new DateTime(1995, 2, 1), Geslacht.Man, 2400.79m);
+wij[1].Afdeling = afdelingStrijd;
+
+wij[2] = new Manager("Idefix", new DateTime(1996, 3, 1), Geslacht.Man, 2400.79m, 7000m);
+wij[2].Afdeling = afdelingFeest;
+
+foreach (Werknemer eenWerknemer in wij)
+{
+    Console.WriteLine(eenWerknemer.GetInfo());
+ Console.WriteLine();
+}
+
+
+//Afdeling objecten via object initializers: (Required properties)
+Afdeling afdelingStrijd = new Afdeling
+{
+    Naam = "Strijd",
+    Verdieping = 0
+};
+
+Afdeling afdelingFeest = new Afdeling
+{
+    Naam = "Feest",
+    Verdieping = 1
+};
+
+Werknemer[] wij = new Werknemer[3];
+wij[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+wij[0].Afdeling = afdelingStrijd;
+
+wij[1] = new Bediende("Obelix", new DateTime(1995, 2, 1), Geslacht.Man, 2400.79m);
+wij[1].Afdeling = afdelingStrijd;
+
+wij[2] = new Manager("Idefix", new DateTime(1996, 3, 1), Geslacht.Man, 2400.79m, 7000m);
+wij[2].Afdeling = afdelingFeest;
+
+foreach (Werknemer eenWerknemer in wij)
+{
+    Console.WriteLine(eenWerknemer.GetInfo());
+    Console.WriteLine();
+}
+
+
+//Constructor met een reference type parameter
+Afdeling afdelingStrijd = new Afdeling("Strijd", 0);
+Arbeider asterix = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3, afdelingStrijd);
+Console.WriteLine(asterix.GetInfo());
+
+
+//Werken met ? Null
+Arbeider asterix = new Arbeider("Asterix", DateTime.Today, Geslacht.Man, 10m, 1);
+
+string? afdelingsnaam;
+
+if (asterix.Afdeling != null)
+{
+    afdelingsnaam = asterix.Afdeling.Naam;
+    Console.WriteLine($"{asterix.Naam} werkt op de afdeling { afdelingsnaam}");
+}
+
+//of
+Arbeider asterix2 = new Arbeider("Asterix2", DateTime.Today, Geslacht.Man, 10m, 1);
+string? afdelingsnaam2 = asterix2.Afdeling?.Naam;
+Console.WriteLine($"{asterix2.Naam} werkt op de afdeling {afdelingsnaam2}");
+
+//?? voor defaultwaarde
+Arbeider asterix3 = new Arbeider("Asterix3", DateTime.Today, Geslacht.Man, 10m, 1);
+string? afdelingsnaam3 = asterix3.Afdeling?.Naam ?? "onbekende afdeling";
+Console.WriteLine($"{asterix3.Naam} werkt op de afdeling {afdelingsnaam3}");
+
+
+Arbeider ik = new Arbeider("Asterix", DateTime.Today, Geslacht.Man, 24.79m, 3);
+
+ik.Regime = new Werknemer.WerkRegime
+{
+    Type = Werknemer.WerkRegime.RegimeType.Voltijds
+};
+
+Console.WriteLine(ik.Regime);
+Console.WriteLine(ik.Regime.AantalVakantiedagen);
+
+
+//Interface polymorphism
+IKost[] kosten = new IKost[4];
+kosten[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+kosten[1] = new Bediende("Obelix", new DateTime(2023, 2, 1), Geslacht.Man, 2400.79m);
+kosten[2] = new Manager("Idefix", new DateTime(2023, 3, 1), Geslacht.Man, 2400.79m, 7000m);
+kosten[3] = new Fotokopiemachine("123", 500, 0.025m);
+
+decimal totaleKost = 0m;
+foreach (IKost kost in kosten)
+{
+    Console.WriteLine(kost.Menselijk);
+    Console.WriteLine(kost.BerekenKostprijs());
+    totaleKost += kost.BerekenKostprijs();
+}
+
+Console.WriteLine(totaleKost);
+
+
+//Is
+Object[] dingen = new Object[3];
+dingen[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+dingen[1] = new Fotokopiemachine("Racekyo", 500, 0.025m);
+dingen[2] = "C#";
+
+foreach (Object ding in dingen)
+ Console.WriteLine(ding is IKost);
+
 */
+/*
+Object?[] lijst = new Object?[4];
+lijst[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+lijst[1] = new Bediende("Obelix", new DateTime(2023, 2, 1), Geslacht.Man, 2400.79m);
+lijst[2] = null;
+lijst[3] = "C# 10";
+
+foreach (var item in lijst)
+{
+    ToonGegevens(item);
+}
+
+
+//method ToonGegevens Klassieke schrijfwijze, geen pattern matching
+static void ToonGegevens(Object? obj)
+{
+    if (obj is Werknemer)
+    {
+        Werknemer? w = obj as Werknemer;
+        Console.WriteLine($"Werknemer {w?.Naam} kost" + $" {w?.BerekenKostprijs()} euro");
+    }
+    else if (obj is Fotokopiemachine)
+    {
+        Fotokopiemachine? f = (Fotokopiemachine)obj;
+        Console.WriteLine($"Fotokopiemachine {f?.SerieNr} kopieerde " + $"{f?.AantalGekopieerdeBlz} en kost {f?.BerekenKostprijs()} euro");
+    }
+    else
+    {
+        Console.WriteLine("onbekend type");
+    }
+}
+
+
+//method ToonGegevens met type pattern matching
+void ToonGegevens(Object? obj)
+{
+    if (obj is Werknemer w)
+    {
+        Console.WriteLine($"Werknemer {w?.Naam} kost {w?.BerekenKostprijs()} euro");
+    }
+    else if (obj is Fotokopiemachine f)
+    {
+        Console.WriteLine($"Fotokopiemachine {f?.SerieNr} kopieerde" + $" {f?.AantalGekopieerdeBlz} en kost {f?.BerekenKostprijs()} euro");
+    }
+    else
+    {
+        Console.WriteLine("onbekend type");
+    }
+}
+
+
+
+//method ToonGegevens met switch pattern matching
+void ToonGegevens(Object? obj)
+{
+    switch (obj)
+    {
+        case Werknemer w:
+            Console.WriteLine($"Werknemer {w?.Naam} kost " + $"{w?.BerekenKostprijs()} euro"); 
+            break;
+        case Fotokopiemachine f:
+            Console.WriteLine($"Fotokopiemachine {f?.SerieNr} " + $"kopieerde {f?.AantalGekopieerdeBlz} " + $"en kost {f?.BerekenKostprijs()} euro"); 
+            break;
+        case null:
+            Console.WriteLine("Parameter = null");
+            break;
+        default:
+            Console.WriteLine("Onbekend type");
+            break;
+    }
+}
+
+
+//Case statement uitbreiden met when
+Object?[] lijst = new Object?[5];
+lijst[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+lijst[1] = new Bediende("Obelix", new DateTime(2023, 1, 1), Geslacht.Man, 1000m);
+lijst[2] = new Bediende("Walhalla", new DateTime(2023, 1, 1), Geslacht.Vrouw, 2000m);
+lijst[3] = null;
+lijst[4] = "C# 10";
+
+foreach (var item in lijst)
+{
+    switch (item)
+    {
+        case Arbeider a when a?.Geslacht == Geslacht.Vrouw:
+            Console.WriteLine($"{a?.Naam}" + $" is een vrouwelijke arbeider " + $"met een uurloon van {a?.Uurloon} euro");
+            break;
+        case Arbeider a when a?.Geslacht == Geslacht.Man:
+            Console.WriteLine($"{a?.Naam} " + $"is een mannelijke arbeider" + $" met een uurloon van {a?.Uurloon} euro");
+            break;
+        case Bediende b when b?.Geslacht == Geslacht.Vrouw:
+            Console.WriteLine($"{b?.Naam} " + $"is een vrouwelijke bediende" + $" met een wedde van {b?.Wedde} euro");
+            break;
+        case Bediende b when b?.Geslacht == Geslacht.Man:
+            Console.WriteLine($"{b?.Naam} " + $"is een mannelijke bediende " + $"met een wedde van {b?.Wedde} euro");
+            break;
+        case Werknemer w when w?.Geslacht == Geslacht.Man:
+            Console.WriteLine($"{w?.Naam}" + $" is een mannelijke werknemer");
+            break;
+        case null:
+            Console.WriteLine($"null");
+            break;
+        default:
+            Console.WriteLine($"{item} is geen werknemer");
+            break;
+    }
+}
+
+
+//Namespace veranderd naar Firma
+using Firma.Materiaal;
+using Firma.Personeel;
+using Firma;
+
+Object[] dingen = new Object[3];
+dingen[0] = new Firma.Personeel.Arbeider("Asterix", new DateTime(2023, 1, 1), Firma.Personeel.Geslacht.Man, 24.79m, 3);
+dingen[1] = new Firma.Materiaal.Fotokopiemachine("123", 500, 0.025m);
+dingen[2] = "C#";
+foreach (Object ding in dingen)
+    Console.WriteLine(ding is Firma.IKost);
+
+
+//Using
+using Firma;
+using Firma.Materiaal;
+using Firma.Personeel;
+
+Object[] dingen = new Object[3];
+dingen[0] = new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+dingen[1] = new Fotokopiemachine("123", 500, 0.025m);
+dingen[2] = "C#";
+
+foreach (Object ding in dingen)
+    Console.WriteLine(ding is IKost);
+
+
+using static System.Console;
+using static System.Math;
+double straal = 5.0;
+
+WriteLine($"De omtrek van een cirkel met straal {straal} cm" + $" bedraagt {2 * PI * straal} cm.");
+
+
+//Enums, verschillende namespaces
+Firma.Materiaal.Status statusBoorMachine = Firma.Materiaal.Status.Werkend;
+Firma.Personeel.Status statusChef = Firma.Personeel.Status.HogerKader;
+Console.WriteLine(statusBoorMachine);
+Console.WriteLine(statusChef);
+
+*/
+//Using Alias
+/*
+using Alias=NameSpace;
+using Alias=NameSpace.Class;
+using Alias=NameSpace.Interface;
+using Alias=NameSpace.Enum;
+*/
+using MateriaalStatus = Firma.Materiaal.Status;
+using PersoneelStatus = Firma.Personeel.Status;
+
+MateriaalStatus statusBoorMachine = MateriaalStatus.Werkend;
+PersoneelStatus statusChef = PersoneelStatus.HogerKader;
+
+Console.WriteLine(statusBoorMachine);
+Console.WriteLine(statusChef);

@@ -1,6 +1,6 @@
 ﻿using CSharpPFCursus;
 
-namespace CsharpPFCursus;
+namespace Firma.Personeel;
 public class Arbeider : Werknemer
 {
 
@@ -32,6 +32,15 @@ public class Arbeider : Werknemer
         }
     }
 
+    /*
+     //Voor Constructor met een reference type parameter
+    public Arbeider(string naam, DateTime inDienst, Geslacht geslacht, decimal uurloon, byte ploegenstelsel, Afdeling afdeling) : base(naam, inDienst, geslacht, afdeling)
+    {
+        Uurloon = uurloon;
+        Ploegenstelsel = ploegenstelsel;
+    }
+    */
+    
     public Arbeider(string naam, DateTime inDienst, Geslacht geslacht, decimal uurloon, byte ploegenstelsel) : base(naam, inDienst, geslacht)
     {
         Uurloon = uurloon;
@@ -58,5 +67,9 @@ public class Arbeider : Werknemer
         return $"{base.ToString()} {Uurloon} euro/uur";
     }
 
+    public override decimal BerekenKostprijs()
+    {
+        return Uurloon * 2000m;
+    }
 
 }

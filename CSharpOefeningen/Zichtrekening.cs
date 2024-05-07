@@ -14,9 +14,7 @@ public class Zichtrekening : Rekening
                 maxKrediet = value;
         }
     }
-    public Zichtrekening(string nummer, decimal saldo,
-    DateOnly creatieDatum, decimal maxKrediet)
-    : base(nummer, saldo, creatieDatum)
+    public Zichtrekening(string nummer, decimal saldo, DateOnly creatieDatum, decimal maxKrediet, Klant eigenaar): base(nummer, saldo, creatieDatum, eigenaar)
     {
         MaxKrediet = maxKrediet;
     }

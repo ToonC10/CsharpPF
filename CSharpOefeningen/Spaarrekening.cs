@@ -15,7 +15,7 @@ public class Spaarrekening : Rekening
         }
     }
 
-    public Spaarrekening(string nummer, decimal saldo, DateOnly creatieDatum): base(nummer, saldo, creatieDatum)
+    public Spaarrekening(string nummer, decimal saldo, DateOnly creatieDatum, Klant eigenaar) : base(nummer, saldo, creatieDatum, eigenaar)
     {
     }
 

@@ -1,13 +1,17 @@
 ﻿
 namespace CSharpPFOefeningen;
-public abstract class Rekening
+public abstract class Rekening: ISpaarmiddel
 {
+
+    public Klant Eigenaar { get; set; }
+
     private readonly DateOnly EersteCreatie = new DateOnly(1900, 1, 1);
-    public Rekening(string nummer, decimal saldo, DateOnly creatieDatum)
+    public Rekening(string nummer, decimal saldo, DateOnly creatieDatum, Klant eigenaar)
     {
         Nummer = nummer;
         Saldo = saldo;
         CreatieDatum = creatieDatum;
+        Eigenaar = eigenaar;
     }
 
     private string nummer;
@@ -57,7 +61,9 @@ public abstract class Rekening
     }
     public virtual string GetInfo()
     {
-        return $"Rekeningnummer: {Nummer}\n" +
+        string eigenaar = Eigenaar?.GetKlantInfo() ?? "onbekend";
+        return $"Eigenaar: {eigenaar}\n" +
+        $"Rekeningnummer: {Nummer}\n" +
         $"Saldo: {Saldo}\n" +
         $"Creatiedatum: {CreatieDatum.ToShortDateString()}";
     }

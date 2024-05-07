@@ -1,5 +1,5 @@
 ﻿namespace CSharpPFOefeningen;
-public abstract class Voertuig
+public abstract class Voertuig: IVervuiler, IPrivaat, IMilieu
 {
     public string Polishouder { get; init; }
     private decimal kostprijs;
@@ -15,6 +15,7 @@ public abstract class Voertuig
         GemiddeldVerbruik = gemiddeldVerbruik;
         Nummerplaat = nummerplaat;
     }
+
     public decimal Kostprijs
     {
         get
@@ -29,6 +30,7 @@ public abstract class Voertuig
             }
         }
     }
+
     private int pk;
     public int Pk
     {
@@ -44,6 +46,7 @@ public abstract class Voertuig
             }
         }
     }
+
     private float gemiddeldVerbruik;
     public float GemiddeldVerbruik
     {
@@ -70,4 +73,15 @@ public abstract class Voertuig
     }
 
     public abstract double GetKyotoScore();
+
+    public abstract double GeefVervuiling();
+
+    public string GeefPrivateData()
+    {
+        return $"Polishouder: {Polishouder} - " + $"Nummerplaat: {Nummerplaat}";
+    }
+    public string GeefMilieuData()
+    {
+        return $"PK: {Pk} - Kostprijs: {Kostprijs} - " + $"Gemiddeld verbruik: {GemiddeldVerbruik}";
+    }
 }
