@@ -1,8 +1,12 @@
-﻿using System.Dynamic;
+﻿using System.Collections.Generic;
+using System.Dynamic;
 
 namespace Oefening1;
-internal abstract partial class Personeel : IKost
+internal abstract class Personeel : IKost
 {
+
+    public static List<VerlofPeriodes> VerlofPeriodes;
+
     private int personeelsNummer;
     public int PersoneelsNummer
     {
@@ -59,11 +63,11 @@ internal abstract partial class Personeel : IKost
         $"Bruto maandloon: {BrutoMaandLoon}\n";
     }
 
-    public decimal Kost { get => brutoMaandLoon * 0.6m; }
+    public decimal MaandKost { get => brutoMaandLoon * 0.6m; set => throw new NotImplementedException(); }
 
-    //Ik snap niet waarom ik deze erbij moet zetten, anders geeft het fout
-    decimal IKost.Kost()
-    {
-        throw new NotImplementedException();
-    }
+    //Ik snap niet waarom ik deze erbij moet zetten, anders geeft het fout (oplossing: dit moest omdat het geen function was (Maandkost {get set})
+    //decimal IKost.Kost()
+    //{
+    //    throw new NotImplementedException();
+    //}
 }

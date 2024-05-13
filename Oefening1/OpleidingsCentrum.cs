@@ -28,14 +28,9 @@ internal class OpleidingsCentrum : IKost
     public virtual string Gegevens()
     {
         return $"Gebouw {Naam} - Huurprijs per maand: {HuurPrijsPerMaand}\n" +
-             $"Maandelijkse Kost: {Kost}\n";
+             $"Maandelijkse Kost: {MaandKost}\n";
     }
 
-    public decimal Kost { get => HuurPrijsPerMaand; }
+    public decimal MaandKost { get => HuurPrijsPerMaand; set => throw new NotImplementedException();}
 
-    //Ik snap niet waarom ik deze erbij moet zetten, anders geeft het fout (idem zoals bij Personeel.cs)
-    decimal IKost.Kost()
-    {
-        throw new NotImplementedException();
-    }
 }

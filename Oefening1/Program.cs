@@ -4,7 +4,8 @@ LijnenTrekker Lijn = new LijnenTrekker();
 decimal totaal = 0m;
 
 //Verlofperiodes
-var VerlofList = new List<VerlofPeriodes>
+//var VerlofList
+Personeel.VerlofPeriodes = new List<VerlofPeriodes>
 {
     new VerlofPeriodes("Kerstmis", new DateOnly(2023, 12, 25), new DateOnly(2024, 1, 1)),
     new VerlofPeriodes("Zomervakantie", new DateOnly(2023, 7, 1), new DateOnly(2023, 7, 31))
@@ -13,10 +14,11 @@ var VerlofList = new List<VerlofPeriodes>
 Console.WriteLine("Collectieve verlofperiodes:");
 Lijn.TekenLijn(27);
 
-foreach (var verlof in VerlofList)
+foreach (var verlof in Personeel.VerlofPeriodes)
 {
-    Console.WriteLine(verlof.Gegevens());
+    Console.WriteLine(verlof.GetInfo());
 }
+Console.WriteLine();
 
 //Personeel
 Console.WriteLine("Kosten personeel en infrastructuur:");
@@ -32,7 +34,7 @@ var personeelList = new List<Personeel>
 foreach (var personeel in personeelList)
 {
     Console.WriteLine(personeel.Gegevens());
-    totaal += personeel.Kost;
+    totaal += personeel.MaandKost;
 }
 
 // OpleidingsCentra
@@ -45,7 +47,7 @@ var gebouwList = new List<OpleidingsCentrum>
 foreach (var gebouw in gebouwList)
 {
     Console.WriteLine(gebouw.Gegevens());
-    totaal += gebouw.Kost;
+    totaal += gebouw.MaandKost;
 }
 
 //totale kost

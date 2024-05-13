@@ -21,7 +21,7 @@ internal class Medewerkers : Personeel
     {
         return $"{base.Gegevens()}" +
         $"Medewerker: {aantalCursisten} cursisten\n" +
-        $"Maandelijkse kost: {Kost} euro\n";
+        $"Maandelijkse kost: {MaandKost} euro\n";
     }
 
 }

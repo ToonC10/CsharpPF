@@ -1,5 +1,5 @@
 ﻿namespace Oefening1;
-internal class VerlofPeriodes : Personeel
+internal class VerlofPeriodes
 {
     private string naam;
     public string Naam
@@ -8,15 +8,15 @@ internal class VerlofPeriodes : Personeel
         set => naam = !string.IsNullOrWhiteSpace(value) ? value : "onbekende naam";
     }
 
-    private static DateOnly beginVerlof;
-    public static DateOnly BeginVerlof
+    private DateOnly beginVerlof;
+    public DateOnly BeginVerlof
     {
         get => beginVerlof;
         set => beginVerlof = value;
     }
 
-    private static DateOnly eindVerlof;
-    public static DateOnly EindVerlof
+    private DateOnly eindVerlof;
+    public DateOnly EindVerlof
     {
         get => eindVerlof;
         set => eindVerlof = value;
@@ -29,7 +29,7 @@ internal class VerlofPeriodes : Personeel
         EindVerlof = eindVerlof;
     }
 
-    public override string Gegevens()
+    public string GetInfo()
     {
         return $"VerlofPeriode: {Naam} van {BeginVerlof} - {EindVerlof}";
     }
