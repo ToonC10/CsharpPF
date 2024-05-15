@@ -10,8 +10,9 @@ public class Zichtrekening : Rekening
         }
         set
         {
-            if (value <= 0m)
-                maxKrediet = value;
+            if (value > 0m)
+                throw new Exception("De waarde van MaxKrediet mag niet positief zijn!");
+            maxKrediet = value;
         }
     }
     public Zichtrekening(string nummer, decimal saldo, DateOnly creatieDatum, decimal maxKrediet, Klant eigenaar): base(nummer, saldo, creatieDatum, eigenaar)

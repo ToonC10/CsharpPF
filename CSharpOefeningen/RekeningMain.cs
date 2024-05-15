@@ -81,4 +81,32 @@ foreach (ISpaarmiddel spaarmiddel in spaarmiddelen)
     Console.WriteLine();
 }
 
+
+//exceptions
+try
+{
+    Spaarrekening.Intrest = 3m;
+    //Klant ik = new Klant("Piet", "Pienter");
+    Klant ik = new Klant
+    {
+        Voornaam = "Piet",
+        Familienaam = "Pienter"
+    };
+    ISpaarmiddel[] spaarmiddelen = new ISpaarmiddel[3];
+    spaarmiddelen[0] = new Zichtrekening("BE40747524091936", 14.51m,
+    DateOnly.FromDateTime(DateTime.Today), -500m, ik);
+    spaarmiddelen[1] = new Spaarrekening("BE40645100000163", 1000m,
+    DateOnly.FromDateTime(DateTime.Today), ik);
+    spaarmiddelen[2] = new Kasbon(DateTime.Today, 1000m, 5, 3.5m, ik);
+    foreach (ISpaarmiddel spaarmiddel in spaarmiddelen)
+    {
+        Console.WriteLine(spaarmiddel.GetInfo());
+        Console.WriteLine();
+    }
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
 */

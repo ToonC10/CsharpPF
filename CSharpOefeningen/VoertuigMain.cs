@@ -84,7 +84,7 @@ foreach (IVervuiler vervuiler in vervuilers)
     Console.WriteLine($"Vervuiling: {vervuiler.GeefVervuiling()}");
 }
 
-*/
+
 //Interfaces: vervolg
 using CSharpPFOefeningen;
 
@@ -111,3 +111,5 @@ foreach (IMilieu voertuig in milieugegevens)
 {
     Console.WriteLine(voertuig.GeefMilieuData());
 }
+
+*/

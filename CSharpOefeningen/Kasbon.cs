@@ -8,8 +8,9 @@ public class Kasbon : ISpaarmiddel
         get { return aankoopDatum; }
         set
         {
-            if (value >= EersteAankoop)
-                aankoopDatum = value;
+            if (value < EersteAankoop)
+                throw new Exception($"De aankoopdatum mag niet voor {EersteAankoop.ToShortDateString()} zijn!");
+            aankoopDatum = value;
         }
     }
     private decimal bedrag;
@@ -18,8 +19,9 @@ public class Kasbon : ISpaarmiddel
         get { return bedrag; }
         set
         {
-            if (value > 0m)
-                bedrag = value;
+            if (value <= 0m)
+                throw new Exception("Het bedrag moet positief zijn!");
+            bedrag = value;
         }
     }
     private int looptijd;
@@ -28,8 +30,9 @@ public class Kasbon : ISpaarmiddel
         get { return looptijd; }
         set
         {
-            if (value > 0)
-                looptijd = value;
+            if (value <= 0)
+                throw new Exception("De looptijd moet positief zijn!");
+            looptijd = value;
         }
     }
     private decimal intrest;
@@ -38,8 +41,9 @@ public class Kasbon : ISpaarmiddel
         get { return intrest; }
         set
         {
-            if (value > 0m)
-                intrest = value;
+            if (value <= 0m)
+                throw new Exception("Intrest moet positief zijn!");
+            intrest = value;
         }
     }
     public Klant Eigenaar { get; set; }

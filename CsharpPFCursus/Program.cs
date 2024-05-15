@@ -1044,7 +1044,7 @@ using Alias=NameSpace;
 using Alias=NameSpace.Class;
 using Alias=NameSpace.Interface;
 using Alias=NameSpace.Enum;
-*/
+
 using MateriaalStatus = Firma.Materiaal.Status;
 using PersoneelStatus = Firma.Personeel.Status;
 
@@ -1053,3 +1053,289 @@ PersoneelStatus statusChef = PersoneelStatus.HogerKader;
 
 Console.WriteLine(statusBoorMachine);
 Console.WriteLine(statusChef);
+
+
+//Exception
+//try - catch
+decimal getal1, getal2;
+Console.Write("eerste getal: ");
+getal1 = decimal.Parse(Console.ReadLine()!);
+Console.Write("tweede getal: ");
+getal2 = decimal.Parse(Console.ReadLine()!);
+Console.WriteLine("deling: " + getal1 / getal2);
+
+//opvangen met if (Indien mogelijk is dit de beste manier)(meest perfomante manier)
+decimal getal3, getal4;
+Console.Write("derde getal: ");
+getal3 = decimal.Parse(Console.ReadLine()!);
+Console.Write("vierde getal: ");
+getal4 = decimal.Parse(Console.ReadLine()!);
+if (getal4 != 0m)
+    Console.WriteLine($"deling: {getal3 / getal4}");
+else
+    Console.WriteLine("Delen door nul niet toegelaten");
+
+//try - catch
+decimal getal1, getal2;
+try
+{
+    Console.Write("eerste getal: ");
+    getal1 = decimal.Parse(Console.ReadLine()!);
+    Console.Write("tweede getal: ");
+    getal2 = decimal.Parse(Console.ReadLine()!);
+    if (getal2 != 0m)
+        Console.WriteLine("deling: " + getal1 / getal2);
+    else
+        Console.WriteLine("Delen door nul niet toegelaten");
+}
+catch
+{
+    Console.WriteLine("Je typt geen getal");
+}
+
+
+//try catch exceptions
+decimal getal1, getal2;
+try
+{
+    Console.Write("eerste getal :");
+    getal1 = decimal.Parse(Console.ReadLine()!);
+    Console.Write("tweede getal :");
+    getal2 = decimal.Parse(Console.ReadLine()!);
+    Console.WriteLine("deling: " + getal1 / getal2);
+}
+catch (FormatException ex)
+{
+    Console.WriteLine("Je typt geen getal");
+    Console.WriteLine(ex.Message);
+    Console.WriteLine(ex.StackTrace);
+}
+catch (DivideByZeroException)
+{
+    Console.WriteLine("Delen door nul niet toegelaten");
+}
+catch (Exception)
+{
+    Console.WriteLine("Een fout heeft zich voorgedaan");
+}
+
+//meerdere try opdrachten
+decimal getal1, getal2;
+try
+{
+    Console.Write("eerste getal: ");
+    getal1 = decimal.Parse(Console.ReadLine()!);
+    try
+    {
+        Console.Write("tweede getal: ");
+        getal2 = decimal.Parse(Console.ReadLine()!);
+        if (getal2 != 0m)
+            Console.WriteLine("deling: " + getal1 / getal2);
+        else
+            Console.WriteLine("Delen door nul niet toegelaten");
+    }
+    catch (FormatException)
+    {
+        Console.WriteLine("Je typt geen getal als tweede getal");
+    }
+}
+catch (FormatException)
+{
+    Console.WriteLine("Je typt geen getal als eerste getal");
+}
+*/
+//Throw (C# geeft fout en voert rest van de set niet meer uit)
+using CsharpPFCursus;
+using Firma.Materiaal;
+using Firma.Personeel;
+using System.Collections;
+/*
+try
+{
+    Fotokopiemachine machine = new Fotokopiemachine("123", 100, 5.4m);
+    Console.WriteLine("Machine goed ingevuld");
+    Console.WriteLine(machine.BerekenKostprijs());
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Fout:" + ex.Message);
+}
+
+Console.WriteLine("Einde programma");
+
+//fout opvangen in hoofdprogramma
+try
+{
+    Fotokopiemachine machine = new Fotokopiemachine("123", -100, -5.4m);
+    Console.WriteLine("Machine goed ingevuld");
+    Console.WriteLine(machine.BerekenKostprijs());
+}
+catch (Exception ex)
+{
+    Console.WriteLine("Fout:" + ex.Message);
+}
+Console.WriteLine("Einde programma");
+
+
+//Eigen exception class ontwerpen (subclass van FotoKopiemachine.cs)
+try
+{
+    Fotokopiemachine machine =
+    new Fotokopiemachine("123", -100, -5.4m);
+    Console.WriteLine("Machine goed ingevuld");
+    Console.WriteLine(machine.BerekenKostprijs());
+}
+catch (Fotokopiemachine.KostPerBlzException ex)
+{
+    Console.WriteLine($"Fout: {ex.Message}: {ex.VerkeerdeKost}");
+}
+catch (Fotokopiemachine.AantalGekopieerdeBlzException ex)
+{
+    Console.WriteLine($"Fout: {ex.Message}: {ex.VerkeerdAantalBlz}");
+}
+Console.WriteLine("Einde programma");
+
+
+//Gegarandeerde tijdige opkuis van resources
+Console.Write("Provincie: ");
+string provincie = Console.ReadLine()!;
+try
+{
+    ProvincieInfo info = new ProvincieInfo();
+    Console.WriteLine(info.ProvincieGrootte(provincie));
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+
+//Collections en Generics
+using Firma.Personeel;
+using System.Collections;
+Arbeider asterix = new Arbeider("Asterix",new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3);
+Bediende obelix = new Bediende("Obelix",new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m);
+Manager idefix = new Manager("Idefix",new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m, 7000m);
+
+List<Werknemer> personeel = new List<Werknemer>();
+
+personeel.Add(asterix);
+personeel.Add(obelix);
+personeel.Insert(1, idefix);
+
+Console.WriteLine($"{personeel[0].Naam} is de 1ste van {personeel.Count} personeelsleden.");
+
+foreach (Werknemer personeelslid in personeel)
+ Console.WriteLine(personeelslid.Naam);
+
+Afdeling eenAfdeling = new Afdeling("Verzending", 0);
+
+
+//'per ongeluk' in een arraylist personeel stoppen geeft runtime fout
+
+//personeel.Add(eenAfdeling);
+
+//foreach (Werknemer personeelslid in personeel)
+//    Console.WriteLine(personeelslid.Naam);
+
+
+//voorbeelden list
+var getallen = new ArrayList { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+var maanden = new List<string>{"januari", "februari","maart","april", "mei","juni","juli","augustus","september","oktober","november","december"};
+var personeel = new List<Werknemer>
+{
+ new Arbeider("Asterix", new DateTime(2023, 1, 1), Geslacht.Man, 24.79m, 3),
+ new Bediende("Obelix", new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m),
+ new Manager("Idefix", new DateTime(2023, 1, 1), Geslacht.Man, 2400.79m, 7000m)
+};
+
+
+// 37.4.1 Een dictionary initialiseren bij de declaratie
+Dictionary<int, string> opleidingen = new Dictionary<int, string>()
+{
+ {1, "Word" },
+ {2, "Excel" },
+ {3, "Access" }
+};
+Dictionary<string, string> extensies = new Dictionary<string, string>
+{
+ {"txt", "Notepad" },
+ {"docx","Word" },
+ {"xlsx","Excel" }
+};
+//of
+
+Dictionary<int, string> opleidingen2 = new Dictionary<int, string>()
+{
+    [1] = "Word",
+    [2] = "Excel",
+    [3] = "Access"
+};
+Dictionary<string, string> extensies2 = new Dictionary<string, string>
+{
+    ["txt"] = "Notepad",
+    ["docx"] = "Word",
+    ["xlsx"] = "Excel"
+};
+//elementen toevoegen
+opleidingen.Add(4, "Powerpoint");
+opleidingen.Add(5, "Outlook"); //ArgumentException
+
+//elementen opvragen
+Console.WriteLine(opleidingen[5]); //Excel
+Console.WriteLine(extensies["docx"]); //Word
+//Console.WriteLine(extensies["xxx"]); //KeyNotFoundException
+
+
+//trygetvalue
+//if (opleidingen.TryGetValue(7, out string? opleiding))
+//{
+//    Console.WriteLine($"opleiding {opleiding} gevonden");
+//}
+//else
+//{
+//    Console.WriteLine("opleiding niet gevonden");
+//}
+
+// of 
+
+//Console.WriteLine($"Opleiding {(opleidingen.TryGetValue(8, out string? opleiding) ? opleiding : "niet")} gevonden");
+
+//elementen van een dictionary overlopen
+foreach (KeyValuePair<int, string> opleiding in opleidingen)
+{
+    Console.WriteLine($"Key = {opleiding.Key}, Value = {opleiding.Value}");
+}
+
+//of met var
+
+foreach (var opleiding in opleidingen)
+{
+    Console.WriteLine($"Key = {opleiding.Key}, Value = {opleiding.Value}");
+}
+
+//of enkel de keys
+foreach (int key in opleidingen.Keys)
+{
+    Console.WriteLine(key);
+}
+
+//of enkel de values
+foreach (string opleiding in opleidingen.Values)
+{
+    Console.WriteLine(opleiding);
+}
+
+*/
+List<Werknemer>? werknemers = new List<Werknemer>
+{
+ new Arbeider("Asterix", DateTime.Today,Geslacht.Man,25m,1),
+ new Bediende("Obelix",DateTime.Today,Geslacht.Man,1200m)
+};
+Console.WriteLine($"Aantal werknemers: {werknemers.Count}");
+
+werknemers = null;
+
+//NullReferenceException
+//Console.WriteLine($"Aantal werknemers: {werknemers.Count}");
+Console.WriteLine($"Aantal werknemers: {werknemers?.Count ?? 0}");

@@ -20,10 +20,11 @@ public abstract class Rekening: ISpaarmiddel
         get => nummer;
         init
         {
-            if (IsGeldigRekeningNummer(value))
+            if (!IsGeldigRekeningNummer(value))
             {
-                nummer = value;
+                throw new Exception("Ongeldig rekeningnummer!");
             }
+            nummer = value;
         }
     }
     public decimal Saldo { get; set; }
@@ -37,8 +38,10 @@ public abstract class Rekening: ISpaarmiddel
         }
         set
         {
-            if (value >= EersteCreatie)
-                creatieDatum = value;
+            if (value < EersteCreatie)
+                throw new Exception($"De creatiedatum mag niet voor " +
+                $"{EersteCreatie.ToShortDateString()} zijn!");
+            creatieDatum = value;
         }
     }
     private bool IsGeldigRekeningNummer(string rekeningNummer)

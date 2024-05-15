@@ -10,8 +10,9 @@ public class Spaarrekening : Rekening
         }
         set
         {
-            if (value >= 0m)
-                intrest = value;
+            if (value <= 0m)
+                throw new Exception("Intrest moet positief zijn!");
+            intrest = value;
         }
     }
 
