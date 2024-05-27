@@ -1335,7 +1335,7 @@ List<Werknemer>? werknemers = new List<Werknemer>
 Console.WriteLine($"Aantal werknemers: {werknemers.Count}");
 
 werknemers = null;
-
+ 
 //NullReferenceException
 //Console.WriteLine($"Aantal werknemers: {werknemers.Count}");
 Console.WriteLine($"Aantal werknemers: {werknemers?.Count ?? 0}");
