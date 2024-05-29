@@ -12,8 +12,8 @@ public class Pasta : Gerecht
         get { return omschrijving; }
         set 
         { 
-            if 
-                (value != "" && value is not null) omschrijving = value; 
+            if (!string.IsNullOrEmpty(value))
+                omschrijving = value;
         }
     }
 

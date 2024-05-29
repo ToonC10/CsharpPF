@@ -8,10 +8,9 @@
 
     public enum Extra
     {
+        brood,
         kaas,
-        olijven,
-        look,
-        jalapenos
+        look
     }
 
     public enum Drank

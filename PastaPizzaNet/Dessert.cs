@@ -13,6 +13,7 @@ public class Dessert : IBedrag
             switch (Naam)
             {
                 case Enums.Dessert.tiramisu:
+                    return 3m;
                 case Enums.Dessert.ijs:
                     return 3m;
                 case Enums.Dessert.cake:
@@ -22,6 +23,7 @@ public class Dessert : IBedrag
             }
         }
     }
+
     private Enums.Dessert naam;
     public Enums.Dessert Naam
     {
@@ -34,10 +36,12 @@ public class Dessert : IBedrag
             naam = value;
         }
     }
+
     public decimal BerekenBedrag()
     {
         return Prijs;
     }
+
     public override string ToString()
     {
         return $"Dessert: {Naam} ({BerekenBedrag()} euro)";

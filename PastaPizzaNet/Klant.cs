@@ -1,5 +1,5 @@
 ﻿namespace PastaPizzaNet;
-internal class Klant
+public class Klant
 {
     public Klant(int klantId, string klantnaam)
     {

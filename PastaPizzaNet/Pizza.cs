@@ -15,7 +15,7 @@ public class Pizza : Gerecht
 
     public override string ToString()
     {
-        return $"{base.ToString()} {(Onderdelen != null ? string.Join("#", Onderdelen) : string.Empty)}";
+        return $"{base.ToString()} {(Onderdelen != null ? string.Join(" - ", Onderdelen) : string.Empty)}";
     }
 }
 
