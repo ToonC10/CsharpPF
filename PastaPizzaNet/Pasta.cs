@@ -1,11 +1,6 @@
 ﻿namespace PastaPizzaNet;
 public class Pasta : Gerecht
 {
-    public Pasta(string naam, decimal prijs, string? omschrijving) : base(naam, prijs)
-    {
-        Omschrijving = omschrijving;
-    }
-
     private string? omschrijving;
     public string? Omschrijving
     {
@@ -15,6 +10,11 @@ public class Pasta : Gerecht
             if (!string.IsNullOrEmpty(value))
                 omschrijving = value;
         }
+    }
+
+    public Pasta(string naam, decimal prijs, string? omschrijving) : base(naam, prijs)
+    {
+        Omschrijving = omschrijving;
     }
 
     public override string ToString()

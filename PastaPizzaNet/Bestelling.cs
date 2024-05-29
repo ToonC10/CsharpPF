@@ -3,7 +3,7 @@
 namespace PastaPizzaNet;
 public class Bestelling : IBedrag
 {
-    public Bestelling(Klant? klant, BestelGerecht? gerecht, Drank? drank, Dessert? dessert, int aantal = 1)
+    public Bestelling(Klant? klant, BesteldGerecht? gerecht, Drank? drank, Dessert? dessert, int aantal = 1)
     {
         Aantal = aantal;
         Klant = klant;
@@ -16,7 +16,7 @@ public class Bestelling : IBedrag
 
     public Klant? Klant { get; set; }
 
-    public BestelGerecht? Gerecht { get; set; }
+    public BesteldGerecht? Gerecht { get; set; }
 
     public Drank? Drank { get; set; }
 

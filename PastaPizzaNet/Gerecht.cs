@@ -13,13 +13,13 @@ public abstract class Gerecht : IBedrag
         get { return naam; }
         set { if (!string.IsNullOrEmpty(value)) naam = value; }
     }
+
     private decimal prijs;
     public decimal Prijs
     {
         get { return prijs; }
         set { prijs = value; }
     }
-
 
     public virtual decimal BerekenBedrag()
     {

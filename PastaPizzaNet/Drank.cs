@@ -19,6 +19,6 @@ public abstract class Drank : IBedrag
 
     public override string ToString()
     {
-        return $"Drank: {Naam} ({BerekenBedrag()} euro)";  //+ overbodig als je $"" gebruikt
+        return $"Drank: {Naam} ({BerekenBedrag()} euro)";
     }
 }

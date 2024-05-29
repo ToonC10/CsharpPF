@@ -7,11 +7,11 @@ public class Klant
         KlantNaam = klantnaam;
     }
 
-    public int KlantId { get; init; }
-    public string? KlantNaam { get; set; }
+    public int KlantId { get; init;}
+    public string? KlantNaam { get; set;}
 
     public override string ToString()
     {
-        return $"ID: {KlantId}\n Naam:{KlantNaam}";
+        return $"Klant:{KlantNaam}";
     }
 }

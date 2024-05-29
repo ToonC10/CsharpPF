@@ -3,29 +3,29 @@ using System.Drawing;
 using System.Text;
 
 namespace PastaPizzaNet;
-public class BestelGerecht : IBedrag
+public class BesteldGerecht : IBedrag
 {
     private const decimal PrijsPerExtra = 1m;
     private const decimal PrijsGroot = 3m;
 
-    public BestelGerecht(Gerecht gerecht, Grootte grootte, List<Extra>? extras)
+    public BesteldGerecht(Gerecht gerecht, Grootte grootte, List<Extra>? extras)
     {
         Gerecht = gerecht;
         Grootte = grootte;
         Extras = extras;
     }
 
-    public Gerecht Gerecht { get; set; }
+    public Gerecht Gerecht { get; set;}
 
-    public Grootte Grootte { get; set; }
+    public Grootte Grootte { get; set;}
 
 
     private List<Extra>? extras;
 
     public List<Extra>? Extras
     {
-        get { return extras; }
-        set { extras = value; }
+        get { return extras;}
+        set { extras = value;}
     }
 
     public decimal BerekenBedrag()

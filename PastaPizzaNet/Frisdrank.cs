@@ -6,7 +6,6 @@ internal class Frisdrank : Drank
     {
     }
 
-
     private Enums.Drank naam;
     public override Enums.Drank Naam
     {
