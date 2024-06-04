@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpOefeningen", "CSharpO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oefening1", "Oefening1\Oefening1.csproj", "{4DBFAFA0-83F6-487E-BC1F-B94C9F8117EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PastaPizzaNet", "PastaPizzaNet\PastaPizzaNet.csproj", "{31085491-8283-410F-8C0E-0F16D81D6739}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PastaPizzaNet", "PastaPizzaNet\PastaPizzaNet.csproj", "{31085491-8283-410F-8C0E-0F16D81D6739}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLYNET", "FLYNET\FLYNET.csproj", "{336C5BFE-F476-49BB-848D-D8B90DF5ED0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{31085491-8283-410F-8C0E-0F16D81D6739}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31085491-8283-410F-8C0E-0F16D81D6739}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31085491-8283-410F-8C0E-0F16D81D6739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336C5BFE-F476-49BB-848D-D8B90DF5ED0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336C5BFE-F476-49BB-848D-D8B90DF5ED0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336C5BFE-F476-49BB-848D-D8B90DF5ED0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336C5BFE-F476-49BB-848D-D8B90DF5ED0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
